@@ -16,11 +16,30 @@ Binding consists of the following 3 pieces:
 * **View Model**: object that does the actual business logic
 
 
-####Example
+####Examples
 If you don't wish to go through the tutorial right now, you can also see the [existing examples](sample/src/at/int32/android/utils/sampleapp).
 
 * [Timer](sample/src/at/int32/android/utils/sampleapp/clock) - a small implementation of a timer (clock)
 * [Client](sample/src/at/int32/android/utils/sampleapp/client) - a more advanced example 
+
+
+######Simple
+
+```java
+
+//create a new binding (see bindable section for more info)
+StringBindable name = new StringBindable();
+
+//bind to text view using the TextBinding (will set the text of the TextView)
+//for more bindings see the binding section
+name.bindTo(new TextBinding<String>((TextView)findViewById(R.id.tv_name)));
+
+//set the value, which updates the textview automatically
+name.set("andreas");
+
+```
+
+######Advanced
 
 We start of by creating a new `View Holder` class.
 
