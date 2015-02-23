@@ -17,6 +17,10 @@ Binding consists of the following 3 pieces:
 
 
 ####Example
+If you don't wish to go through the tutorial right now, you can also see the [existing examples](sample/src/at/int32/android/utils/sampleapp).
+
+* [Timer](sample/src/at/int32/android/utils/sampleapp/clock) - a small implementation of a timer (clock)
+* [Client](sample/src/at/int32/android/utils/sampleapp/client) - a more advanced example 
 
 We start of by creating a new `View Holder` class.
 
@@ -46,11 +50,13 @@ public class UserViewModel extends ViewModel<UserViewHolder> {
 }
 ```
 
-Now we are pretty much set up. Now we can do the actual binding. This is also pretty straight forward. Consider the bind method of the `View Model` we just created.
+We are pretty much set up. Now we can do the actual binding which is also pretty straight forward. Consider the bind method of the `View Model` we just created.
 
 ```java
 @Override
 public void bind(UserViewHolder viewHolder) {
+    //see the bindings section for more binding types!
+    
     this.name.bindTo(new TextBinding<String>(viewHolder.name));
 }
 ```
