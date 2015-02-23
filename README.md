@@ -67,6 +67,7 @@ UserViewModel model = new UserViewModel();
 
 //set the name, updates the ui
 model.name.set("andreas");
+```
 
 ####Bindables
 There are multiple types of `Bindables` that are shipped with android-utils, but you could easily write your own.
