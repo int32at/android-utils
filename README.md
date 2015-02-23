@@ -7,14 +7,7 @@ android-utils is a simple, small and fast framework for Android. It includes the
 
 
 ###UI Binding
-
-I know i know, yet another UI binding library for Android. The reason i created this component was simple due to the fact that no other library felt easy to use, and easy to integrate in an existing codebase. I took the following approach:
-
-Binding consists of the following 3 pieces:
-* **Bindable**: object that holds the value and notifies when it's changed
-* **View Holder**: object that holds references to views
-* **View Model**: object that does the actual business logic
-
+The UI Binding component of this library allows you to specify bindable objects that will, upon changing, notify the UI Views about the change (text changed, background color, custom, etc.).
 
 ####Examples
 If you don't wish to go through the tutorial right now, you can also see the [existing examples](sample/src/at/int32/android/utils/sampleapp).
