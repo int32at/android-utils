@@ -7,9 +7,9 @@ public class IntegerBindable extends Bindable<Integer> {
 	public IntegerBindable() {
 		super();
 	}
-	
+
 	public IntegerBindable(int defaultValue) {
 		super(defaultValue);
 	}
-	
+
 }

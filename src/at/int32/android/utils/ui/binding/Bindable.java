@@ -1,9 +1,10 @@
 package at.int32.android.utils.ui.binding;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 import android.view.View;
+import android.widget.TextView;
+import at.int32.android.utils.ui.binding.types.TextBinding;
 
 public class Bindable<T> {
 	private T data;
@@ -27,15 +28,19 @@ public class Bindable<T> {
 		this.data = data;
 		run();
 	}
-	
+
 	public Bindable<T> bindTo(BindingRunnable<T, ? extends View> runnable) {
-		if(!runnings.contains(runnable))
+		if (!runnings.contains(runnable))
 			runnings.add(runnable);
 		return this;
 	}
-	
+
 	public void initialize() {
 		run();
+	}
+
+	public TextBinding<T> textBinding(TextView... textViews) {
+		return new TextBinding<T>(textViews);
 	}
 
 	private void run() {

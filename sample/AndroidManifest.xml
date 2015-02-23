@@ -21,6 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <receiver android:name="at.int32.android.utils.sampleapp.clock.ClockReceiver" >
+		   <intent-filter android:priority="100">
+		      <action android:name="android.intent.action.TIME_TICK" />
+		   </intent-filter>
+		</receiver>
+        
     </application>
 
 </manifest>

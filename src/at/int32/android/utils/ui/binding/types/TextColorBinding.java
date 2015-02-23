@@ -11,7 +11,7 @@ public class TextColorBinding extends BindingRunnable<Integer, TextView> {
 
 	@Override
 	public void run(Integer color) {
-		for(TextView view : getViews())
+		for (TextView view : getViews())
 			view.setTextColor(color);
 	}
 }

@@ -7,7 +7,7 @@ public class StringBindable extends Bindable<String> {
 	public StringBindable() {
 		super();
 	}
-	
+
 	public StringBindable(String defaultValue) {
 		super(defaultValue);
 	}
