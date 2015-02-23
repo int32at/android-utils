@@ -41,7 +41,7 @@ And now create the `View Model`. We can add a `Bindable` called **name** to it -
 ```java
 public class UserViewModel extends ViewModel<UserViewHolder> {
 
-    private StringBindable name = new StringBindable();
+    public StringBindable name = new StringBindable();
 
     @Override
     public void bind(UserViewHolder viewHolder) {
@@ -60,7 +60,13 @@ public void bind(UserViewHolder viewHolder) {
     this.name.bindTo(new TextBinding<String>(viewHolder.name));
 }
 ```
-**That's it!** Whenever the value of `name` is changed using it's `set(String data)` method, the view `R.id.tv_name` will be updated. Since we bound a TextBinding<String> to this view, obviously the text will be changed.
+**That's it!** Whenever the value of `name` is changed using it's `set(String data)` method, the view `R.id.tv_name` will be updated. Since we bound a TextBinding<String> to this view, obviously the text will be changed. Like this:
+
+```java
+UserViewModel model = new UserViewModel();
+
+//set the name, updates the ui
+model.name.set("andreas");
 
 ####Bindables
 There are multiple types of `Bindables` that are shipped with android-utils, but you could easily write your own.
