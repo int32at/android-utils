@@ -35,6 +35,10 @@ public class ClientViewModel extends ViewModel<ClientViewHolder> {
 	public String name() {
 		return this.client.name().get();
 	}
+	
+	public void name(String name) {
+		this.client.name().set(name);
+	}
 
 	public int age() {
 		return this.client.age().get();

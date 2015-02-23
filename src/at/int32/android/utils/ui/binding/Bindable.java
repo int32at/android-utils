@@ -35,6 +35,24 @@ public class Bindable<T> {
 		return this;
 	}
 
+	public Bindable<T> unbindFrom(View view) {
+
+		ArrayList<BindingRunnable<T, ? extends View>> delete
+			= new ArrayList<BindingRunnable<T, ? extends View>>();
+
+		for (BindingRunnable<T, ? extends View> r : runnings) {
+			for (View v : r.getViews()) {
+				if (v.getId() == view.getId()) {
+					delete.add(r);
+				}
+			}
+		}
+		
+		runnings.removeAll(delete);
+
+		return this;
+	}
+
 	public void initialize() {
 		run();
 	}
