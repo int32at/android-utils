@@ -1,62 +1,81 @@
 package at.int32.android.utils.sampleapp.client;
 
 import android.content.Context;
+import at.int32.android.utils.ui.binding.Bindable;
 import at.int32.android.utils.ui.binding.ViewModel;
+import at.int32.android.utils.ui.binding.bindable.BooleanBindable;
+import at.int32.android.utils.ui.binding.bindable.IntegerBindable;
+import at.int32.android.utils.ui.binding.bindable.StringBindable;
 import at.int32.android.utils.ui.binding.types.VisibilityBinding;
 
 public class ClientViewModel extends ViewModel<ClientViewHolder> {
 
-	private ClientBinding client;
 	private Context context;
 
-	public ClientViewModel(Context context, Client actualClient) {
+	private StringBindable name;
+	private IntegerBindable age;
+	private BooleanBindable enabled;
+	private ClientTypeBindable type;
+
+	public ClientViewModel(Context context) {
 		this.context = context;
-		this.client = new ClientBinding(actualClient);
+
+		this.name = new StringBindable("andreas");
+		this.age = new IntegerBindable(24);
+		this.enabled = new BooleanBindable(true);
+		this.type = new ClientTypeBindable(ClientType.ADMIN);
 	}
 
 	@Override
 	public void bind(ClientViewHolder viewHolder) {
 
-		this.client.name()
-				.bindTo(this.client.name().textBinding(viewHolder.name))
+		this.name.bindTo(this.name.textBinding(viewHolder.name)).initialize();
+
+		this.age.bindTo(this.age.textBinding(viewHolder.age)).initialize();
+
+		this.enabled.bindTo(new VisibilityBinding(viewHolder.enabled))
 				.initialize();
 
-		this.client.age().bindTo(this.client.age().textBinding(viewHolder.age))
-				.initialize();
-
-		this.client.enabled().bindTo(new VisibilityBinding(viewHolder.enabled))
-				.initialize();
-
-		this.client.type()
-				.bindTo(new ClientTypeBinding(this.context, viewHolder.name))
+		this.type.bindTo(new ClientTypeBinding(this.context, viewHolder.name))
 				.initialize();
 	}
 
 	public String name() {
-		return this.client.name().get();
+		return this.name.get();
 	}
-	
+
 	public void name(String name) {
-		this.client.name().set(name);
+		this.name.set(name);
 	}
 
 	public int age() {
-		return this.client.age().get();
+		return this.age.get();
 	}
 
 	public Boolean enabled() {
-		return this.client.enabled().get();
+		return this.enabled.get();
 	}
 
 	public void enabled(Boolean enabled) {
-		this.client.enabled().set(enabled);
+		this.enabled.set(enabled);
 	}
 
-	public Client.Type type() {
-		return this.client.type().get();
+	public ClientType type() {
+		return this.type.get();
 	}
 
-	public void type(Client.Type type) {
-		this.client.type().set(type);
+	public void type(ClientType type) {
+		this.type.set(type);
+	}
+
+	public class ClientTypeBindable extends Bindable<ClientType> {
+
+		public ClientTypeBindable() {
+			super();
+		}
+
+		public ClientTypeBindable(ClientType type) {
+			super(type);
+		}
 	}
 }

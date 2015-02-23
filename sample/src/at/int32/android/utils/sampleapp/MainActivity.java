@@ -3,8 +3,7 @@ package at.int32.android.utils.sampleapp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
-import at.int32.android.utils.sampleapp.client.Client;
-import at.int32.android.utils.sampleapp.client.Client.Type;
+import at.int32.android.utils.sampleapp.client.ClientType;
 import at.int32.android.utils.sampleapp.client.ClientViewHolder;
 import at.int32.android.utils.sampleapp.client.ClientViewModel;
 import at.int32.android.utils.sampleapp.clock.TimerViewHolder;
@@ -24,11 +23,11 @@ public class MainActivity extends Activity {
 		timer.start();
 		
 		//ADVANCED MODEL
-		ClientViewModel model = new ClientViewModel(this, new Client("Andreas", 24));
+		ClientViewModel model = new ClientViewModel(this);
 		model.bind(getViewHolder());
 		
 		model.enabled(true);
-		model.type(Type.ADMIN);
+		model.type(ClientType.ADMIN);
 	}
 
 	private ClientViewHolder getViewHolder() {
