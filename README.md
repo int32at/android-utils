@@ -46,11 +46,13 @@ public class UserViewModel extends ViewModel<UserViewHolder> {
 }
 ```
 
-Now we are pretty much set up. Now we can do the actual binding. This is also pretty straight forward. Consider the bind method of the `View Model` we just created.
+We are pretty much set up. Now we can do the actual binding which is also pretty straight forward. Consider the bind method of the `View Model` we just created.
 
 ```java
 @Override
 public void bind(UserViewHolder viewHolder) {
+    //see the bindings section for more binding types!
+    
     this.name.bindTo(new TextBinding<String>(viewHolder.name));
 }
 ```
