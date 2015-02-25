@@ -49,7 +49,7 @@ public class Bus {
 
 		if(thread == RunOnThread.MAIN) {
 			if(Looper.myLooper() == Looper.getMainLooper())
-				publish(event);
+				publishEvent(event);
 			else {
 				mainHandler.post(new Runnable() {
 					
