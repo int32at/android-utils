@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<lint>
-    <issue id="SimpleDateFormat">
-        <ignore path="src/at/int32/android/utils/sampleapp/clock/TimerViewModel.java" />
-    </issue>
-</lint>

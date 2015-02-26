@@ -1,17 +1,18 @@
 package at.int32.android.utils.ui.binding.types;
 
 import android.view.View;
-import at.int32.android.utils.ui.binding.BindingRunnable;
+import at.int32.android.utils.ui.binding.Binding;
 
-public class VisibilityBinding extends BindingRunnable<Boolean, View> {
+public class VisibilityBinding extends Binding<Boolean, View> {
 
-	public VisibilityBinding(View... view) {
-		super(view);
+	public VisibilityBinding(View... views) {
+		super(views);
 	}
-
 	@Override
-	public void run(Boolean enabled) {
-		for (View view : getViews())
-			view.setVisibility(enabled ? View.VISIBLE : View.GONE);
+	public void run(Boolean visible, View view) {
+		if (view == null)
+			return;
+		
+		view.setVisibility(visible ? View.VISIBLE : View.GONE);
 	}
 }
