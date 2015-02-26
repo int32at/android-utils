@@ -1,19 +1,21 @@
 package at.int32.android.utils.ui.binding.types;
 
-import android.widget.ListAdapter;
+import android.util.Log;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import at.int32.android.utils.ui.binding.Binding;
 
-public class ListViewBinding extends Binding<ListAdapter, ListView> {
+public class ListViewBinding extends Binding<BaseAdapter, ListView> {
 	
 	public ListViewBinding(ListView... views) {
 		super(views);
 	}
 	
 	@Override
-	public void run(ListAdapter data, ListView view) {
-		if(view != null)
+	public void run(BaseAdapter data, ListView view) {
+		if(view != null) {
 			view.setAdapter(data);
+			Log.e("sampleapp", "set view adapter");
+		}
 	}
-
 }

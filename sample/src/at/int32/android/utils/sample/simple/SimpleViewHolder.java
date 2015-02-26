@@ -17,7 +17,7 @@ public class SimpleViewHolder implements IViewHolder {
 	public BindableEditText name_edit;
 	public BindableNumberPicker sec_edit;
 	
-	public Button reset;
+	public Button reset, add;
 	
 	public Context context;
 	
@@ -26,6 +26,7 @@ public class SimpleViewHolder implements IViewHolder {
 		context = activity;
 		
 		reset = (Button)activity.findViewById(R.id.btn_reset);
+		add = (Button)activity.findViewById(R.id.btn_add);
 		
 		name = (TextView)activity.findViewById(R.id.simple_name);
 		sec = (TextView)activity.findViewById(R.id.simple_sec);

@@ -12,7 +12,7 @@ public class Loader {
 	
 	private static void loadSimple(Activity activity) {
 
-		SimpleViewModel model = new SimpleViewModel();
+		SimpleViewModel model = new SimpleViewModel(activity);
 		model.bind(new SimpleViewHolder(activity));
 		
 	}

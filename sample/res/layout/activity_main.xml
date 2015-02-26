@@ -40,22 +40,8 @@
             android:id="@+id/simple_sec_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            minv_alue="0"
-            max_value="100" />
-    </LinearLayout>
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal" >
-
-        <ListView
-            android:id="@+id/simple_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="25dp" />
-
+            max_value="100"
+            minv_alue="0" />
     </LinearLayout>
 
     <LinearLayout
@@ -70,6 +56,26 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="RESET" />
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="ADD" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ListView
+            android:id="@+id/simple_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="25dp" />
     </LinearLayout>
 
 </LinearLayout>
