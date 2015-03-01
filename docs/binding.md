@@ -61,7 +61,7 @@ IntegerBindable age = new IntegerBindable(24);
 //bind to model
 age.bindTo(viewHolder.age);
 
-//initialize (updates the view, without having to manually call the .set() method
+//initialize (updates the view, without having to manually call the .set() method)
 age.initialize();
 ```
 
