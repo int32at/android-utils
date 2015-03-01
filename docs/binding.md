@@ -124,3 +124,26 @@ public class ClientTypeBinding extends Binding<Type, TextView> {
 	}
 }
 ```
+
+####Bindable Controls/Views
+In order to establish a bidirectional binding (Two-Way) you need to use custom controls instead of the android ones. They are usually prefixed with Bindable*. At the moment, following controls support Two-Way binding:
+
+* **BindableEditText**: extends the normal EditText view
+* **BindableNumberPicker**: extends the normal NumberPicker view
+
+All bindable controls are within the `at.int32.android.utils.ui.binding.controls` namespace.
+
+```java
+<at.int32.android.utils.ui.binding.controls.BindableEditText
+	android:id="@+id/name_edit"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" />
+	
+<at.int32.android.utils.ui.binding.controls.BindableNumberPicker
+	android:id="@+id/age_edit"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	max_value="100" <!-- sets the max value -->
+	min_value="0" <!-- sets the min value -->
+android:textStyle="bold" />
+```
