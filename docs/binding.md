@@ -1,17 +1,16 @@
 ###UI Binding
-The UI Binding component of this library allows you to specify bindable objects that will, upon changing, notify the UI Views about the change (text changed, background color, custom, etc.).
+The UI Binding component of this library allows you to specify bindable objects that can be bound to any kind of view. You can choose between 2 modes:
+
+* **One-Way Binding**: this mode allows you to update the UI of your app whenever a `Bindable` is changed (Model -> View).
+
+* **Two-Way (Bidirectional) Binding**: this mode will update the `bindables` whenever the view is changed and vice-versa. (Model <-> View). Obviously, you could also just make the view bind to the model (Model <- View).
 
 ####Examples
-If you don't wish to go through the tutorial right now, you can also see the [existing examples](sample/src/at/int32/android/utils/sampleapp).
 
-* [Timer](sample/src/at/int32/android/utils/sampleapp/clock) - a small implementation of a timer (clock)
-* [Client](sample/src/at/int32/android/utils/sampleapp/client) - a more advanced example
+* [UI Binding](sample/src/at/int32/android/utils/sampleapp/clock) - simple view model with 2 bindables and Two-Way-Binding enabled.
 
-
-######Simple
-
+One-Way Binding
 ```java
-
 //create a new binding (see bindable section for more info)
 StringBindable name = new StringBindable();
 
@@ -21,56 +20,24 @@ name.bindTo(new TextBinding<String>((TextView)findViewById(R.id.tv_name)));
 
 //set the value, which updates the textview automatically
 name.set("andreas");
-
 ```
 
-######Advanced
-
-We start of by creating a new `View Holder` class.
-
+Two-Way Binding
 ```java
-public class UserViewHolder implements IViewHolder {
-    public TextView name;
-}
-```
-Now lets create a new object from our `View Holder` and reference the views we want to update.
+StringBindable name = new StringBindable();
 
-```java
-UserViewHolder viewHolder = new UserViewHolder();
-viewHolder.name = (TextView) findViewById(R.id.tv_name);
-```
+//get the bindable edittext (custom control)
+BindableEditText edit = (BindableEditText) findViewById(R.id.edit_name);
 
-And now create the `View Model`. We can add a `Bindable` called **name** to it - this will be our object that updates the UI when it's value is changed.
+//bind view to model
+edit.bindTo(name);
 
-```java
-public class UserViewModel extends ViewModel<UserViewHolder> {
+//bind model to view
+name.bindTo(new TextBinding<String>(edit));
 
-    public StringBindable name = new StringBindable();
+//the view will now have a default value, and whenever it's changed (through user input) the model will update aswell!
+name.set("andreas");
 
-    @Override
-    public void bind(UserViewHolder viewHolder) {
-        //todo: implement (see next step)
-    }
-}
-```
-
-We are pretty much set up. Now we can do the actual binding which is also pretty straight forward. Consider the bind method of the `View Model` we just created.
-
-```java
-@Override
-public void bind(UserViewHolder viewHolder) {
-    //see the bindings section for more binding types!
-
-    this.name.bindTo(new TextBinding<String>(viewHolder.name));
-}
-```
-**That's it!** Whenever the value of `name` is changed using it's `set(String data)` method, the view `R.id.tv_name` will be updated. Since we bound a TextBinding<String> to this view, obviously the text will be changed. Like this:
-
-```java
-UserViewModel model = new UserViewModel();
-
-//set the name, updates the ui
-model.name.set("andreas");
 ```
 
 ####Bindables
@@ -79,6 +46,9 @@ There are multiple types of `Bindables` that are shipped with android-utils, but
 * **StringBindable**
 * **IntegerBindable**
 * **BooleanBindable**
+* **FloatBindable**
+* **DrawableBindable**
+* **BitmapBindable**
 
 **Writing your own**
 
@@ -97,7 +67,7 @@ public class UUIDBindable extends Bindable<UUID> {
 Another interesting fact about `Bindables` is that you can bind them to **multiple** views!
 
 ```java
-name.bindTo(viewHolder.name, viewHolder.name1, ViewHolder.name3);
+name.bindTo(viewHolder.name, viewHolder.name1, viewHolder.name3);
 ```
 
 Whenever `name` is updated, it updates all 3 views! How neat is that?
@@ -109,10 +79,15 @@ Just like `Bindables`, there are also different implementations of Bindings that
 * **TextColorBinding**: sets the front color of a text view
 * **BackgroundColorBinding**: sets the background color of a view
 * **VisibilityBinding**: sets the visibility (view, gone) of a view
+* **NumberPickerBinding**: sets the (integer) value of a number picker
+* **ForegroundColorBinding**: sets the foreground (text) color of a text view
+* **FocusBinding**: sets the focus of a view
+* **BackgroundResourceBinding**: sets the background resource of a view
+* **BackgroundDrawableBinding**: sets the background drawable of a view
 
 **Writing your own**
 ```java
-public class ClientTypeBinding extends BindingRunnable<Client.Type, TextView> {
+public class ClientTypeBinding extends BindingRunnable<Type, TextView> {
 
 	private Context context;
 
