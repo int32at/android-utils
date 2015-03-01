@@ -52,7 +52,20 @@ There are multiple types of `Bindables` that are shipped with android-utils, but
 
 **Writing your own**
 
-You can write your own by extending the `BindingRunnable<T, View>` object. An example:
+**Default Value**: `Bindables` can also have an default value (which can update the UI aswell if you want).
+
+```java
+//set the default value
+IntegerBindable age = new IntegerBindable(24);
+
+//bind to model
+age.bindTo(viewHolder.age);
+
+//initialize (updates the view, without having to manually call the .set() method
+age.initialize();
+```
+
+You can write your own by extending the `Bindable<T>` object. An example:
 ```java
 public class UUIDBindable extends Bindable<UUID> {
 	public UUIDBindable() {
@@ -87,7 +100,7 @@ Just like `Bindables`, there are also different implementations of Bindings that
 
 **Writing your own**
 ```java
-public class ClientTypeBinding extends BindingRunnable<Type, TextView> {
+public class ClientTypeBinding extends Binding<Type, TextView> {
 
 	private Context context;
 
