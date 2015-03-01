@@ -17,7 +17,7 @@ public class Bus {
 	public Bus() {
 		this(RunOnThread.ANY);
 	}
-	
+
 	public Bus(RunOnThread thread) {
 		this.thread = thread;
 		this.handlers = new ConcurrentHashMap<Object, ArrayList<Method>>();
@@ -26,7 +26,7 @@ public class Bus {
 	public void register(Object register) {
 		if (register == null)
 			return; // todo throw exception here
-		
+
 		Method[] methods = register.getClass().getMethods();
 
 		ArrayList<Method> found = new ArrayList<Method>();
@@ -44,18 +44,19 @@ public class Bus {
 	public void unregister(Object register) {
 		this.handlers.remove(register);
 	}
-	
+
 	public <T> void publish(final Event<T> event) {
 
-		if(thread == RunOnThread.MAIN) {
-			if(Looper.myLooper() == Looper.getMainLooper())
+		if (thread == RunOnThread.MAIN) {
+			if (Looper.myLooper() == Looper.getMainLooper())
 				publishEvent(event);
 			else {
 				mainHandler.post(new Runnable() {
-					
+
 					@Override
 					public void run() {
-						publishEvent(event);;
+						publishEvent(event);
+						;
 					}
 				});
 			}
@@ -63,9 +64,9 @@ public class Bus {
 			publishEvent(event);
 		}
 	}
-	
+
 	private <T> void publishEvent(Event<T> event) {
-		
+
 		for (Object register : this.handlers.keySet()) {
 			for (Method method : this.handlers.get(register)) {
 				for (Class<?> c : method.getParameterTypes()) {

@@ -7,8 +7,8 @@ import android.widget.NumberPicker.OnValueChangeListener;
 import at.int32.android.utils.ui.binding.IViewBindable;
 import at.int32.android.utils.ui.binding.bindable.IntegerBindable;
 
-public class BindableNumberPicker extends NumberPicker implements
-		IViewBindable<Integer, IntegerBindable>, OnValueChangeListener {
+public class BindableNumberPicker extends NumberPicker implements IViewBindable<Integer, IntegerBindable>,
+		OnValueChangeListener {
 
 	private IntegerBindable bindable;
 

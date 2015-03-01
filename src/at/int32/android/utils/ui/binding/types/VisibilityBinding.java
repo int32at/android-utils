@@ -8,11 +8,12 @@ public class VisibilityBinding extends Binding<Boolean, View> {
 	public VisibilityBinding(View... views) {
 		super(views);
 	}
+
 	@Override
 	public void run(Boolean visible, View view) {
 		if (view == null)
 			return;
-		
+
 		view.setVisibility(visible ? View.VISIBLE : View.GONE);
 	}
 }

@@ -9,10 +9,11 @@ public class BackgroundDrawableBinding extends Binding<Drawable, View> {
 	public BackgroundDrawableBinding(View... views) {
 		super(views);
 	}
-	
+
 	@Override
 	public void run(Drawable drawable, View view) {
-		if(view == null) return;
+		if (view == null)
+			return;
 		view.setBackgroundDrawable(drawable);
 	}
 

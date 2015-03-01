@@ -6,8 +6,7 @@ public class Threading {
 
 	private static Handler handler = new Handler();
 
-	public static void runEvery(final Runnable r,
-			final int milliseconds) {
+	public static void runEvery(final Runnable r, final int milliseconds) {
 
 		new Thread(new Runnable() {
 			@Override

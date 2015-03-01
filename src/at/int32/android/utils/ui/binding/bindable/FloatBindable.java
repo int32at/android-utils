@@ -6,7 +6,7 @@ public class FloatBindable extends Bindable<Float> {
 	public FloatBindable() {
 		super();
 	}
-	
+
 	public FloatBindable(Float defaultValue) {
 		super(defaultValue);
 	}

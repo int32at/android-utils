@@ -8,7 +8,7 @@ public class BitmapBindable extends Bindable<Bitmap> {
 	public BitmapBindable() {
 		super();
 	}
-	
+
 	public BitmapBindable(Bitmap defaultValue) {
 		super(defaultValue);
 	}

@@ -8,10 +8,11 @@ public class ForegroundColorBinding extends Binding<Integer, TextView> {
 	public ForegroundColorBinding(TextView... views) {
 		super(views);
 	}
-	
+
 	@Override
 	public void run(Integer color, TextView view) {
-		if(view == null) return;
+		if (view == null)
+			return;
 		view.setTextColor(color);
 	}
 

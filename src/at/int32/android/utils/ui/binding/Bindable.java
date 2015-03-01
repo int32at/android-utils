@@ -21,11 +21,11 @@ public class Bindable<T> {
 	public T get() {
 		return this.data;
 	}
-	
+
 	public void set(T data) {
 		set(data, false);
 	}
-	
+
 	public void set(T data, boolean twoWay) {
 		this.data = data;
 		run(twoWay);

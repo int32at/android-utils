@@ -7,8 +7,9 @@ public class FocusBinding extends Binding<Boolean, View> {
 
 	@Override
 	public void run(Boolean focus, View view) {
-		if(view == null) return;
-		if(focus)
+		if (view == null)
+			return;
+		if (focus)
 			view.requestFocus();
 		else
 			view.clearFocus();
