@@ -7,7 +7,7 @@ The UI Binding component of this library allows you to specify bindable objects 
 
 ####Examples
 
-* [UI Binding](sample/src/at/int32/android/utils/sampleapp/clock) - simple view model with 2 bindables and Two-Way-Binding enabled.
+* [UI Binding](/samples/sample_binding/src/at/int32/android/utils/samples/binding) - simple view model with 2 bindables and Two-Way-Binding enabled.
 
 One-Way Binding
 ```java
