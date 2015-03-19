@@ -4,6 +4,7 @@ An `Activity` becomes an `BootableActivity` in which you can register multiple m
 
 Example
 
+Say we create a new Activity called `ChatActivity` where we would like to display a chat window between 2 users.
 ```java
 public class ChatActivity extends BootableActivity {
 	
@@ -12,5 +13,17 @@ public class ChatActivity extends BootableActivity {
 		register(this, new ChatModule());
 	}
 }
+```
+
+Now we create the `Module`
+```java
+public class ChatModule extends ActivityModule {
+
+	@Override
+	public void onCreate() {
+		//code here
+	}
+}
+
 
 ```
