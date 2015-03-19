@@ -1,39 +1,49 @@
 package at.int32.android.utils.ui.binding.controls;
 
-import android.content.Context;
-import android.util.AttributeSet;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.EditText;
-import at.int32.android.utils.ui.binding.IViewBindable;
-import at.int32.android.utils.ui.binding.bindable.StringBindable;
+import at.int32.android.utils.ui.binding.Bindable;
+import at.int32.android.utils.ui.binding.IViewBinding;
 
-public class BindableEditText extends EditText implements IViewBindable<String, StringBindable> {
+public class BindableEditText implements IViewBinding<String, Bindable<String>> {
+	private EditText edit;
+	private Bindable<String> bindable;
 
-	private StringBindable bindable;
+	public BindableEditText(EditText text) {
+		edit = text;
 
-	public BindableEditText(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
+		edit.addTextChangedListener(new TextWatcher() {
 
-	@Override
-	protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
 
-		if (this.bindable != null)
-			this.bindable.set(text.toString(), true);
+				if (bindable != null) {
+					bindable.set(s.toString(), true);
+				}
+			}
 
-		super.onTextChanged(text, start, lengthBefore, lengthAfter);
-	}
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+			}
 
-	@Override
-	public void bindTo(StringBindable bindable) {
-		this.bindable = bindable;
+			@Override
+			public void afterTextChanged(Editable s) {
+			}
+		});
 	}
 
 	@Override
 	public void update(String bindable, boolean twoWay) {
 
-		Log.d("utilsapp", "received update = " + bindable + " two way = " + twoWay);
-		if (!twoWay)
-			setText(bindable);
+		if (!twoWay) {
+			edit.setText(bindable);
+		}
+	}
+
+	public void bindTo(Bindable<String> bindable) {
+		this.bindable = bindable;
 	}
 }

@@ -16,14 +16,9 @@ public abstract class Binding<T, V extends View> implements IViewRunnable<T, V> 
 	@Override
 	public abstract void run(T data, V view);
 
-	protected void each(T data, boolean twoWay) {
+	protected void each(T data) {
 		for (V view : views) {
-			if (!(view instanceof IViewBindable<?, ?>))
-				run(data, view);
-			else {
-				IViewBindable<T, Bindable<T>> bindable = (IViewBindable<T, Bindable<T>>) view;
-				bindable.update(data, twoWay);
-			}
+			run(data, view);
 		}
 	}
 

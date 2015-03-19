@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:padding="30dp"
+        android:padding="20dp"
         android:text="UI Binding Sample"
         android:textSize="25sp"
         android:textStyle="bold" />
@@ -30,7 +30,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="10dp" >
@@ -73,7 +73,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="horizontal" >
 
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:text="Change name to " />
 
-        <at.int32.android.utils.ui.binding.controls.BindableEditText
+        <EditText
             android:id="@+id/name_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -99,14 +99,18 @@
             android:layout_height="wrap_content"
             android:text="Change age to " />
 
-        <at.int32.android.utils.ui.binding.controls.BindableNumberPicker
+        <NumberPicker
             android:id="@+id/age_edit"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            max_value="100"
-            min_value="0"
             android:textStyle="bold" />
     </LinearLayout>
+    
+     <SeekBar
+         android:id="@+id/test_edit"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginRight="5dp" />
 
     <Button
         android:id="@+id/btn_reset"
