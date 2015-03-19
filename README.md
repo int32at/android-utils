@@ -1,8 +1,7 @@
 android-utils
 =============
-
-![gradle](https://img.shields.io/github/tag/int32at/android-utils.svg?label=gradle)
-![maven](https://img.shields.io/github/tag/int32at/android-utils.svg?label=maven)
+[![gradle](https://img.shields.io/github/tag/int32at/android-utils.svg?label=gradle)](https://jitpack.io/#int32at/android-utils/v1.0.2)
+[![maveh](https://img.shields.io/github/tag/int32at/android-utils.svg?label=maven)](https://jitpack.io/#int32at/android-utils/v1.0.2)
 
 android-utils is a simple, small and fast framework for Android. It includes the following features:
 
