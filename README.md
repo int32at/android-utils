@@ -1,6 +1,9 @@
 android-utils
 =============
 
+![gradle](https://img.shields.io/github/tag/int32at/android-utils.svg?label=gradle)
+![maven](https://img.shields.io/github/tag/int32at/android-utils.svg?label=maven)
+
 android-utils is a simple, small and fast framework for Android. It includes the following features:
 
 * [UI Binding](docs/binding.md) - Supports **One-Way** (Model -> View or Model <- View) and **Two-Way** (Model <-> View) Binding. Allows you to bind objects, so called `Bindables`, to any kind of view and update the UI when those objects change. You can set the text of TextView's, change the background color or write your own `Bindings` which allows you to customize the UI actions.
