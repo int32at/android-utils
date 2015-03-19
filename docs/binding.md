@@ -27,10 +27,10 @@ Two-Way Binding
 StringBindable name = new StringBindable();
 
 //get the bindable edittext (custom control)
-BindableEditText edit = (BindableEditText) findViewById(R.id.edit_name);
+BindableEditText edit = new BindableEditText((EditText) findViewById(R.id.edit_name));
 
 //bind view to model
-edit.bindTo(name);
+name.bindTo(edit);
 
 //bind model to view
 name.bindTo(new TextBinding<String>(edit));
@@ -49,6 +49,7 @@ There are multiple types of `Bindables` that are shipped with android-utils, but
 * **FloatBindable**
 * **DrawableBindable**
 * **BitmapBindable**
+* **DateBindable**
 
 **Writing your own**
 
@@ -97,6 +98,9 @@ Just like `Bindables`, there are also different implementations of Bindings that
 * **FocusBinding**: sets the focus of a view
 * **BackgroundResourceBinding**: sets the background resource of a view
 * **BackgroundDrawableBinding**: sets the background drawable of a view
+* **DisabledBinding**: sets the disabled state of a view 
+* **ImageViewBitmapBinding**: sets the picture (bitmap) of a ImageView
+* **SeekBarBinding**: sets the value of a seekbar view
 
 **Writing your own**
 ```java
@@ -126,24 +130,39 @@ public class ClientTypeBinding extends Binding<Type, TextView> {
 ```
 
 ####Bindable Controls/Views
-In order to establish a bidirectional binding (Two-Way) you need to use custom controls instead of the android ones. They are usually prefixed with Bindable*. At the moment, following controls support Two-Way binding:
+In order to establish a bidirectional binding (Two-Way) you can re-use the default android controls. They are usually prefixed with Bindable*. At the moment, following controls support Two-Way binding:
 
-* **BindableEditText**: extends the normal EditText view
-* **BindableNumberPicker**: extends the normal NumberPicker view
+* **BindableEditText**: enables the EditText view to receive two-way updates
+* **BindableNumberPicker**: enables the NumberPicker view to receive two-way updates
+* **BindableSeekBar**: enables the SeekBar view to receive two-way updates
 
 All bindable controls are within the `at.int32.android.utils.ui.binding.controls` namespace.
 
 ```java
-<at.int32.android.utils.ui.binding.controls.BindableEditText
+<EditText
 	android:id="@+id/name_edit"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content" />
-	
-<at.int32.android.utils.ui.binding.controls.BindableNumberPicker
+
+EditText view = (EditText)findViewById(R.id.name_edit);
+
+StringBindable name = new StringBindable("Andreas");
+
+//whenver the view changes, update name
+name.bindTo(new BindableEditText(view));
+
+```
+```java
+<NumberPicker
 	android:id="@+id/age_edit"
 	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	max_value="100" <!-- sets the max value -->
-	min_value="0" <!-- sets the min value -->
-android:textStyle="bold" />
+	android:layout_height="wrap_content" />
+
+NumberPicker view = (NumberPicker)findViewById(R.id.age_edit);
+
+IntegerBindable age = new IntegerBindable(24);
+
+//whenver the view changes, update name
+age.bindTo(new BindableNumberPicker(view));
+
 ```
